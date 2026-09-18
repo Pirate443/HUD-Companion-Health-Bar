@@ -46,7 +46,7 @@ local function calculateSizes()
         SlotWidth = cf.SlotIconSize + config.BorderSize * 2
         SlotHeight = cf.SlotIconSize + config.BorderSize * 2
         -- Ширина общего блока (если слот включен)
-        blockWidth = blockWidth + SlotWidth + config.BorderSize * 2
+        blockWidth = blockWidth + SlotWidth + cf.blockSpacing * 2
         -- Ширина шкалы здоровья в режиме separate (если слот включен)
         AltBarWidth = cf.healthBarWidth + SlotWidth + cf.blockSpacing*2
     end
