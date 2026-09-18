@@ -1,0 +1,46 @@
+		The Elder Scrolls III MorrowinD
+--------------------------------------------------------------
+HUD Companion Health Bar
+--------------------------------------------------------------
+Version 1.0
+Author: Pirate
+Nexusmods: 
+Fullrest: 
+Tesall: 
+--------------------------------------------------------------
+			Description:
+This mod adds a companion health bar interface. For each companion, it displays bars for health, magicka, and stamina, as well as a slot showing their currently equipped weapon or spell. This mod is an enhanced version of the "More Detailed Companion HealthBars " mod by Spammer21.
+Mod Features
+- The mod configuration menu has been completely overhauled.
+- Many HUD parameters can now be customized in detail.
+- Different setting configurations can be saved to separate files, allowing for quick switching between them.
+- Several ready-made presets are included.
+--------------------------------------------------------------
+			Credits:
+Spammer21 is the author update of the "More Detailed Companion HealthBars MWSE Lua Script" mod.
+Mesafoo is the author of the "Companion Health Bars MWSE Lua Script".
+--------------------------------------------------------------
+			Recommended mods:
+HUD Equipment
+HUD Equipped Light
+QuickKeys Hotbar Extended
+Seph's HUD Customizer
+--------------------------------------------------------------
+			This is NOT compatible with, and replaces:
+Companion Health Bars MWSE Lua Script
+More Detailed Companion HealthBars MWSE Lua Script
+--------------------------------------------------------------
+			Requirements:
+Morrowind
+Tribunal
+Bloodmoon
+Morrowind Code Patch
+MGE XE 0.17.0 + (Run MWSE-update.exe)
+MWSE 2.1 +
+--------------------------------------------------------------
+			Installation:
+Copy the "Data Files" to your game folder or use a mod manager.
+----------------------------------------------------------------
+			Changelogs:
+Version 1.0
+- Initial Release.
