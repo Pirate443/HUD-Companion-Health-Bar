@@ -108,10 +108,10 @@ local function updateAllHealthBarValues()
 		local npcHealth = companionRef and companionRef.mobile and companionRef.mobile.health
 		local npcMagicka = companionRef and companionRef.mobile and companionRef.mobile.magicka
 		local npcFatigue = companionRef and companionRef.mobile and companionRef.mobile.fatigue
-		companionBar.barMenu0.visible = cf.healthBarPos == "separate"
-		companionBar.barMenu.visible = cf.healthBarPos == "combined"
-		companionBar.barMenu2.visible = cf.magickaBar
-		companionBar.barMenu3.visible = cf.fatigueBar
+		companionBar.barMenu0.parent.visible = cf.healthBarPos == "separate"
+		companionBar.barMenu.parent.visible = cf.healthBarPos == "combined"
+		companionBar.barMenu2.parent.visible = cf.magickaBar
+		companionBar.barMenu3.parent.visible = cf.fatigueBar
 		if not barWidget then return end
         bar0Widget.max = npcHealth.base
 		bar0Widget.current = npcHealth.current
@@ -194,12 +194,9 @@ local function createNewHealthBars(companions)
         healthBarMenuAlt.parent.width = AltBarWidth
         healthBarMenuAlt.parent.height = cf.healthBarHeight
         healthBarMenuAlt.parent.visible = cf.healthBarPos == "separate"
-        --healthBarMenuAlt.borderAllSides = cf.blockSpacing
-        --healthBarMenuAlt.borderTop = 1
         healthBarMenuAlt.width = AltBarWidth
         healthBarMenuAlt.height = cf.healthBarHeight
         healthBarMenuAlt.widget.showText = cf.showValuesHealth
-        --healthBarMenuAlt.visible = cf.healthBarPos == "separate"
 		local block = companionHealthBars.mainHealthBarMenu.menu:createBlock()
         block.width = blockWidth
         block.height = math.max(BarHeight, SlotHeight) + cf.blockSpacing * 2
@@ -210,35 +207,47 @@ local function createNewHealthBars(companions)
         block2.absolutePosAlignY = cf.barBlockAlignY
 		block2.flowDirection = "top_to_bottom"
         block2.borderAllSides = cf.blockSpacing
-		local healthBarMenu = block2:createFillBar{
+		local healthBarMenu = block2:createRect():createFillBar{
 			id = healthBarMenuID,
 			current = companionRef.mobile.health.current,
 			max = companionRef.mobile.health.base
 		}
-		local magickaBarMenu = block2:createFillBar{
+		local magickaBarMenu = block2:createRect():createFillBar{
 			id = healthBarMenuID.."m",
 			current = companionRef.mobile.magicka.current,
 			max = companionRef.mobile.magicka.base
 		}
-		local fatigueBarMenu = block2:createFillBar{
+		local fatigueBarMenu = block2:createRect():createFillBar{
 			id = healthBarMenuID.."f",
 			current = companionRef.mobile.fatigue.current,
 			max = companionRef.mobile.fatigue.base
 		}
+        healthBarMenu.parent.width = cf.healthBarWidth
+        healthBarMenu.parent.height = cf.healthBarHeight
+        healthBarMenu.parent.alpha = 0.8
         healthBarMenu.widget.fillColor = tes3ui.getPalette("health_color")
-		healthBarMenu.width = cf.healthBarWidth
-		healthBarMenu.height = cf.healthBarHeight
+        healthBarMenu.width = cf.healthBarWidth
+        healthBarMenu.height = cf.healthBarHeight
         healthBarMenu.widget.showText = cf.showValuesHealth
+        healthBarMenu.parent.visible = cf.healthBarPos == "combined"
 
+        magickaBarMenu.parent.width = cf.magickaBarWidth
+        magickaBarMenu.parent.height = cf.magickaBarHeight
+        healthBarMenu.parent.alpha = 0.8
 		magickaBarMenu.widget.fillColor = tes3ui.getPalette("magic_color")
-		magickaBarMenu.width = cf.magickaBarWidth
-		magickaBarMenu.height = cf.magickaBarHeight
+        magickaBarMenu.width = cf.magickaBarWidth
+        magickaBarMenu.height = cf.magickaBarHeight
         magickaBarMenu.widget.showText = cf.showValuesMagicka
+        magickaBarMenu.parent.visible = cf.magickaBar
 
+        fatigueBarMenu.parent.width = cf.fatigueBarWidth
+        fatigueBarMenu.parent.height = cf.fatigueBarHeight
+        healthBarMenu.parent.alpha = 0.8
 		fatigueBarMenu.widget.fillColor = tes3ui.getPalette("fatigue_color")
-		fatigueBarMenu.width = cf.fatigueBarWidth
-		fatigueBarMenu.height = cf.fatigueBarHeight
+        fatigueBarMenu.width = cf.fatigueBarWidth
+        fatigueBarMenu.height = cf.fatigueBarHeight
         fatigueBarMenu.widget.showText = cf.showValuesFatigue
+        fatigueBarMenu.parent.visible = cf.fatigueBar
 
         -- Weapon Slot
 		local image = block:createThinBorder():createRect({id = "CHB_SpaFork_images", color = {0,0,0}})
@@ -338,8 +347,8 @@ local function removeExpiredHealthBars(companionTable)
 			local barMenu3 = companionHealthBars.mainHUD.menu:findChild(companionBar.barMenuID.."f")
 			if labelMenu ~= nil and barMenu ~= nil and barMenu0 ~= nil then
 				labelMenu:destroy()
-                barMenu0.parent:destroy()
-				barMenu.parent.parent:destroy()
+                barMenu0.parent.parent:destroy()
+				barMenu.parent.parent.parent:destroy()
 				--barMenu2:destroy()
 				--barMenu3:destroy()
 				companionHealthBars.healthBars[companionBar.companionRef] = nil
@@ -477,17 +486,6 @@ end
 
 --If the actor passed in has a health bar, update the values on it
 local function updateHealthBarValues(npcReference)
-	--[[local healthBars = companionHealthBars.healthBars
-	if healthBars then
-		local npcBar = healthBars[npcReference]
-		if npcBar then
-			local barWidget = npcBar.barMenu.widget
-			local npcHealth = npcReference.mobile.health
-			barWidget.max = npcHealth.base
-			barWidget.current = npcHealth.current
-		end
-	end]]
-
     local healthBars = companionHealthBars.healthBars
     if not healthBars then return end
     local npcBar = healthBars[npcReference]
@@ -613,8 +611,6 @@ function mcm.updateHUDSize()
             companionBar.barMenu0.parent.visible = cf.healthBarPos == "separate"
             companionBar.barMenu0.width = AltBarWidth
             companionBar.barMenu0.height = cf.healthBarHeight
-            --companionBar.barMenu0.visible = cf.healthBarPos == "separate"
-            --companionBar.barMenu0.borderAllSides = cf.blockSpacing
         end
         if companionBar.block then
         companionBar.block.width = blockWidth
@@ -626,19 +622,25 @@ function mcm.updateHUDSize()
             companionBar.block2.borderAllSides = cf.blockSpacing
         end
         if companionBar.barMenu then
+            companionBar.barMenu.parent.width = cf.healthBarWidth
+            companionBar.barMenu.parent.height = cf.healthBarHeight
             companionBar.barMenu.width = cf.healthBarWidth
             companionBar.barMenu.height = cf.healthBarHeight
-            companionBar.barMenu.visible = cf.healthBarPos == "combined"
+            companionBar.barMenu.parent.visible = cf.healthBarPos == "combined"
         end
         if companionBar.barMenu2 then
+            companionBar.barMenu2.parent.width = cf.magickaBarWidth
+            companionBar.barMenu2.parent.height = cf.magickaBarHeight
             companionBar.barMenu2.width = cf.magickaBarWidth
             companionBar.barMenu2.height = cf.magickaBarHeight
-            companionBar.barMenu2.visible = cf.magickaBar
+            companionBar.barMenu2.parent.visible = cf.magickaBar
         end
         if companionBar.barMenu3 then
+            companionBar.barMenu3.parent.width = cf.fatigueBarWidth
+            companionBar.barMenu3.parent.height = cf.fatigueBarHeight
             companionBar.barMenu3.width = cf.fatigueBarWidth
             companionBar.barMenu3.height = cf.fatigueBarHeight
-            companionBar.barMenu3.visible = cf.fatigueBar
+            companionBar.barMenu3.parent.visible = cf.fatigueBar
         end
         if companionBar.image then
             companionBar.image.width = cf.SlotIconSize
