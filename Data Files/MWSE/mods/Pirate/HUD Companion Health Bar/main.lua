@@ -183,18 +183,23 @@ local function createNewHealthBars(companions)
         local blockHealth = companionHealthBars.mainHealthBarMenu.menu:createBlock()
         blockHealth.autoWidth = true
         blockHealth.autoHeight = true
-        local healthBarMenuAlt = blockHealth:createFillBar{
+        local healthBarMenuAlt = blockHealth:createRect():createFillBar{
             id = healthBarMenuID.."0",
             current = companionRef.mobile.health.current,
             max = companionRef.mobile.health.base
         }
-        healthBarMenuAlt.borderAllSides = cf.blockSpacing
-        healthBarMenuAlt.borderTop = 1
+        healthBarMenuAlt.parent.alpha = 0.8
+        healthBarMenuAlt.parent.borderAllSides = cf.blockSpacing
+        healthBarMenuAlt.parent.borderTop = 1
+        healthBarMenuAlt.parent.width = AltBarWidth
+        healthBarMenuAlt.parent.height = cf.healthBarHeight
+        healthBarMenuAlt.parent.visible = cf.healthBarPos == "separate"
+        --healthBarMenuAlt.borderAllSides = cf.blockSpacing
+        --healthBarMenuAlt.borderTop = 1
         healthBarMenuAlt.width = AltBarWidth
         healthBarMenuAlt.height = cf.healthBarHeight
         healthBarMenuAlt.widget.showText = cf.showValuesHealth
-        healthBarMenuAlt.visible = cf.healthBarPos == "separate"
-
+        --healthBarMenuAlt.visible = cf.healthBarPos == "separate"
 		local block = companionHealthBars.mainHealthBarMenu.menu:createBlock()
         block.width = blockWidth
         block.height = math.max(BarHeight, SlotHeight) + cf.blockSpacing * 2
@@ -202,7 +207,7 @@ local function createNewHealthBars(companions)
 		local block2 = block:createBlock()
         block2.width = BarWidth
         block2.height = BarHeight
-        block2.absolutePosAlignY = cf.barBlockAlignY --0.5
+        block2.absolutePosAlignY = cf.barBlockAlignY
 		block2.flowDirection = "top_to_bottom"
         block2.borderAllSides = cf.blockSpacing
 		local healthBarMenu = block2:createFillBar{
@@ -240,7 +245,7 @@ local function createNewHealthBars(companions)
         image.parent.width = SlotWidth
         image.parent.height = SlotHeight
         image.parent.borderAllSides = cf.blockSpacing
-        image.parent.absolutePosAlignY = cf.weaponSlotAlignY --0.5
+        image.parent.absolutePosAlignY = cf.weaponSlotAlignY
         image.parent.paddingAllSides = config.BorderSize
 		image.alpha = cf.iconBackgroundAlpha / 100
         image.scaleMode = true
@@ -602,10 +607,14 @@ function mcm.updateHUDSize()
 
     for _, companionBar in pairs(companionHealthBars.healthBars) do
         if companionBar.barMenu0 then
+            companionBar.barMenu0.parent.borderAllSides = cf.blockSpacing
+            companionBar.barMenu0.parent.width = AltBarWidth
+            companionBar.barMenu0.parent.height = cf.healthBarHeight
+            companionBar.barMenu0.parent.visible = cf.healthBarPos == "separate"
             companionBar.barMenu0.width = AltBarWidth
             companionBar.barMenu0.height = cf.healthBarHeight
-            companionBar.barMenu0.visible = cf.healthBarPos == "separate"
-            companionBar.barMenu0.borderAllSides = cf.blockSpacing
+            --companionBar.barMenu0.visible = cf.healthBarPos == "separate"
+            --companionBar.barMenu0.borderAllSides = cf.blockSpacing
         end
         if companionBar.block then
         companionBar.block.width = blockWidth
