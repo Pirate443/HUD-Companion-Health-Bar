@@ -20,14 +20,14 @@ local LINKS_LIST = {
         text = i18n("mcm.Nexus"),
         url = "https://www.nexusmods.com/morrowind/mods/60242"
     },
-    --{
-        --text = i18n("mcm.FullRest"),
-        --url = " "
-    --},
-    --{
-        --text = i18n("mcm.TESAll"),
-        --url = " "
-    --},
+    {
+        text = i18n("mcm.FullRest"),
+        url = "https://www.fullrest.ru/files/interfeys-zdorovya-kompanonov"
+    },
+    {
+        text = i18n("mcm.TESAll"),
+        url = "https://tesall.ru/files/file/14646-interfeys-zdorovya-kompanonov/"
+    },
 }
 local CREDITS_LIST = {
     {
@@ -439,6 +439,21 @@ local function registerMCM()
         variable = mwse.mcm.createTableVariable{id = "fatigueBarHeight", table = config.mcm},
         callback = function()
             mcm.updateHUDSize()
+        end
+    }
+
+    category1:createSlider{
+        label = i18n("mcm.Bar.BgAlpha.label") .. " %s%%",
+        description = i18n("mcm.Bar.BgAlpha.desc"),
+        defaultSetting = config.mcmDefault.BarBackgroundAlpha,
+        restartRequired = false,
+        min = 0,
+        max = 100,
+        step = 1,
+        jump = 10,
+        variable = mwse.mcm.createTableVariable{ id = "BarBackgroundAlpha", table = config.mcm },
+        callback = function()
+            mcm.updateBarBgAlpha()
         end
     }
 

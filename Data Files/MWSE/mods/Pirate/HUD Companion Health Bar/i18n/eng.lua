@@ -82,6 +82,10 @@ local this = {
     ["mcm.fatigueBarWidth.desc"] = "This parameter sets the width of the Fatigue bar.",
     ["mcm.fatigueBarHeight.label"] = "Fatigue Bar Height",
     ["mcm.fatigueBarHeight.desc"] = "This parameter sets the height of the Fatigue bar.",
+    ["mcm.Bar.BgAlpha.label"] = "Bars Background Alpha:",
+    ["mcm.Bar.BgAlpha.desc"] = "This parameter determines the opacity of the Bars background.\n\n\z
+    At 0, the Bars background is fully transparent.\n\z
+    At 100, the Bars background is fully opaque.",
     ["mcm.HUD.BgAlpha.label"] = "HUD Companion Background Alpha:",
     ["mcm.HUD.BgAlpha.desc"] = "This parameter determines the opacity of the Companion HUD background.\n\n\z
     At 0, the HUD background is fully transparent.\n\z

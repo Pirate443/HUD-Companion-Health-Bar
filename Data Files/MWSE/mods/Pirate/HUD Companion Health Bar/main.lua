@@ -188,7 +188,7 @@ local function createNewHealthBars(companions)
             current = companionRef.mobile.health.current,
             max = companionRef.mobile.health.base
         }
-        healthBarMenuAlt.parent.alpha = 0.8
+        healthBarMenuAlt.parent.alpha = cf.BarBackgroundAlpha / 100
         healthBarMenuAlt.parent.borderAllSides = cf.blockSpacing
         healthBarMenuAlt.parent.borderTop = 1
         healthBarMenuAlt.parent.width = AltBarWidth
@@ -224,7 +224,7 @@ local function createNewHealthBars(companions)
 		}
         healthBarMenu.parent.width = cf.healthBarWidth
         healthBarMenu.parent.height = cf.healthBarHeight
-        healthBarMenu.parent.alpha = 0.8
+        healthBarMenu.parent.alpha = cf.BarBackgroundAlpha / 100
         healthBarMenu.widget.fillColor = tes3ui.getPalette("health_color")
         healthBarMenu.width = cf.healthBarWidth
         healthBarMenu.height = cf.healthBarHeight
@@ -233,7 +233,7 @@ local function createNewHealthBars(companions)
 
         magickaBarMenu.parent.width = cf.magickaBarWidth
         magickaBarMenu.parent.height = cf.magickaBarHeight
-        healthBarMenu.parent.alpha = 0.8
+        healthBarMenu.parent.alpha = cf.BarBackgroundAlpha / 100
 		magickaBarMenu.widget.fillColor = tes3ui.getPalette("magic_color")
         magickaBarMenu.width = cf.magickaBarWidth
         magickaBarMenu.height = cf.magickaBarHeight
@@ -242,7 +242,7 @@ local function createNewHealthBars(companions)
 
         fatigueBarMenu.parent.width = cf.fatigueBarWidth
         fatigueBarMenu.parent.height = cf.fatigueBarHeight
-        healthBarMenu.parent.alpha = 0.8
+        healthBarMenu.parent.alpha = cf.BarBackgroundAlpha / 100
 		fatigueBarMenu.widget.fillColor = tes3ui.getPalette("fatigue_color")
         fatigueBarMenu.width = cf.fatigueBarWidth
         fatigueBarMenu.height = cf.fatigueBarHeight
@@ -525,6 +525,16 @@ function mcm.updatePosition()
     end
 end
 
+function mcm.updateBarBgAlpha()
+    if not companionHealthBars.healthBars then return end
+    for _, companionBar in pairs(companionHealthBars.healthBars) do
+        companionBar.barMenu0.parent.alpha = cf.BarBackgroundAlpha / 100
+        companionBar.barMenu.parent.alpha = cf.BarBackgroundAlpha / 100
+        companionBar.barMenu2.parent.alpha = cf.BarBackgroundAlpha / 100
+        companionBar.barMenu3.parent.alpha = cf.BarBackgroundAlpha / 100
+    end
+end
+
 function mcm.updateBgAlpha()
     if companionHealthBars.mainHealthBarMenu and companionHealthBars.mainHealthBarMenu.menu then
         companionHealthBars.mainHealthBarMenu.menu.alpha = cf.HUDBackgroundAlpha / 100
@@ -683,6 +693,7 @@ function mcm.updateOptions()
 		eventsRegistered = true
 	end
     mcm.updatePosition()
+    mcm.updateBarBgAlpha()
     mcm.updateBgAlpha()
     mcm.updateIconBgAlpha()
     mcm.updateShowValues()

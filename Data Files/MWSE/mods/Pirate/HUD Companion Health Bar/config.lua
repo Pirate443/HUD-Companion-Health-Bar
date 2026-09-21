@@ -23,6 +23,7 @@ config.mcmDefault = {
     showValuesFatigue = false,
     fatigueBarWidth = 60,
     fatigueBarHeight = 12,
+    BarBackgroundAlpha = 60,
     HUDBackgroundAlpha = 0,
     weaponSlot = true,
     SlotIconSize = 40,
