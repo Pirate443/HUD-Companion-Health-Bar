@@ -81,7 +81,7 @@ end
 function presets.save(presetName)
     local data = {}
     local keys = {
-        "sephIntegration", "HUDPositionX", "HUDPositionY", "healthBarPos", "showValuesHealth", "healthBarWidth", "healthBarHeight", "magickaBar", "showValuesMagicka", "magickaBarWidth", "magickaBarHeight", "fatigueBar", "showValuesFatigue", "fatigueBarWidth", "fatigueBarHeight", "HUDBackgroundAlpha", "weaponSlot", "SlotIconSize", "iconBackgroundAlpha", "weaponSlotPos", "blockSpacing", "weaponSlotAlignY", "barBlockAlignY"
+        "sephIntegration", "HUDPositionX", "HUDPositionY", "healthBarPos", "showValuesHealth", "healthBarWidth", "healthBarHeight", "magickaBar", "showValuesMagicka", "magickaBarWidth", "magickaBarHeight", "fatigueBar", "showValuesFatigue", "fatigueBarWidth", "fatigueBarHeight", "BarBackgroundAlpha", "HUDBackgroundAlpha", "weaponSlot", "SlotIconSize", "iconBackgroundAlpha", "weaponSlotPos", "blockSpacing", "weaponSlotAlignY", "barBlockAlignY"
     }
     for _, key in ipairs(keys) do
         data[key] = config.mcm[key]
