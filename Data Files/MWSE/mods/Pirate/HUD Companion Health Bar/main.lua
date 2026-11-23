@@ -233,7 +233,7 @@ local function createNewHealthBars(companions)
 
         magickaBarMenu.parent.width = cf.magickaBarWidth
         magickaBarMenu.parent.height = cf.magickaBarHeight
-        healthBarMenu.parent.alpha = cf.BarBackgroundAlpha / 100
+        magickaBarMenu.parent.alpha = cf.BarBackgroundAlpha / 100
 		magickaBarMenu.widget.fillColor = tes3ui.getPalette("magic_color")
         magickaBarMenu.width = cf.magickaBarWidth
         magickaBarMenu.height = cf.magickaBarHeight
@@ -242,7 +242,7 @@ local function createNewHealthBars(companions)
 
         fatigueBarMenu.parent.width = cf.fatigueBarWidth
         fatigueBarMenu.parent.height = cf.fatigueBarHeight
-        healthBarMenu.parent.alpha = cf.BarBackgroundAlpha / 100
+        fatigueBarMenu.parent.alpha = cf.BarBackgroundAlpha / 100
 		fatigueBarMenu.widget.fillColor = tes3ui.getPalette("fatigue_color")
         fatigueBarMenu.width = cf.fatigueBarWidth
         fatigueBarMenu.height = cf.fatigueBarHeight
