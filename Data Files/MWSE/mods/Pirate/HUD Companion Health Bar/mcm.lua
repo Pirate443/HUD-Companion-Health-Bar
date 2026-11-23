@@ -15,50 +15,39 @@ local presetDropdown
 local weaponSlotAlignYDropdown
 local barBlockAlignYDropdown
 
-local LINKS_LIST = {
-    {
-        text = i18n("mcm.Nexus"),
-        url = "https://www.nexusmods.com/morrowind/mods/60242"
-    },
-    {
-        text = i18n("mcm.FullRest"),
-        url = "https://www.fullrest.ru/files/interfeys-zdorovya-kompanonov"
-    },
-    {
-        text = i18n("mcm.TESAll"),
-        url = "https://tesall.ru/files/file/14646-interfeys-zdorovya-kompanonov/"
-    },
-}
-local CREDITS_LIST = {
-    {
-        text = i18n("mcm.Pirate"),
-        url = "https://www.nexusmods.com/profile/Pirate443",
-    },
-    {
-        text = i18n("mcm.Spammer21"),
-        url = "https://www.nexusmods.com/profile/Spammer21",
-    },
-    {
-        text = i18n("mcm.Mesafoo"),
-        url = "https://www.nexusmods.com/profile/mesafoo",
-    },
-}
 local function addSideBar(component)
     component.sidebar:createCategory(i18n("mcm.modname")..i18n("mcm.version")..config.modVersion)
     component.sidebar:createInfo{ text = i18n("mcm.ModDescription") }
 
     local linksCategory = component.sidebar:createCategory(i18n("mcm.Links"))
-    for _, link in ipairs(LINKS_LIST) do
-        linksCategory:createHyperLink{ text = link.text, url = link.url }
-        end
+    linksCategory:createHyperLink{
+        text = i18n("mcm.Nexus"),
+        url = "https://www.nexusmods.com/morrowind/mods/60242"
+    }
+    linksCategory:createHyperLink{
+        text = i18n("mcm.FullRest"),
+        url = "https://www.fullrest.ru/files/interfeys-zdorovya-kompanonov"
+    }
+    linksCategory:createHyperLink{
+        text = i18n("mcm.TESAll"),
+        url = "https://tesall.ru/files/file/14646-interfeys-zdorovya-kompanonov/"
+    }
+
     local creditsCategory = component.sidebar:createCategory(i18n("mcm.Credits"))
-    for _, credit in ipairs(CREDITS_LIST) do
-        if credit.url then
-            creditsCategory:createHyperLink{ text = credit.text, url = credit.url }
-        else
-            creditsCategory:createInfo{ text = credit.text }
-        end
-    end
+    creditsCategory:createHyperLink{
+        text = i18n("mcm.Pirate"),
+        url = "https://www.nexusmods.com/profile/Pirate443",
+    }
+    creditsCategory:createHyperLink{
+        text = i18n("mcm.Spammer21"),
+        url = "https://www.nexusmods.com/profile/Spammer21",
+    }
+    creditsCategory:createHyperLink{
+        text = i18n("mcm.Mesafoo"),
+        url = "https://www.nexusmods.com/profile/mesafoo",
+    }
+
+    --creditsCategory:createInfo{ text = credit.text }
 end
 
 local function registerMCM()
