@@ -16,7 +16,7 @@ local weaponSlotAlignYDropdown
 local barBlockAlignYDropdown
 
 local function addSideBar(component)
-    component.sidebar:createCategory(i18n("mcm.modname")..i18n("mcm.version")..config.modVersion)
+    component.sidebar:createCategory(i18n("mcm.modname")..i18n("mcm.version")..(config.modVersion or (i18n("mcm.metadata.eror"))))
     component.sidebar:createInfo{ text = i18n("mcm.ModDescription") }
 
     local linksCategory = component.sidebar:createCategory(i18n("mcm.Links"))

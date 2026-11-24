@@ -1,5 +1,6 @@
 local config = {}
-config.modVersion = "1.0"
+config.metadata = toml.loadMetadata("HUD Companion Health Bar")
+config.modVersion = config.metadata and config.metadata.package.version or nil
 config.configPath = "HUD_Companion_Health_Bar"
 config.presetPath = "HUD_Companion_Preset"
 config.BorderSize = 2

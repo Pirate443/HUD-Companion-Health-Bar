@@ -2,6 +2,7 @@ local this = {
     --mcm general
     ["mcm.modname"] = "HUD Companion Health Bar",
     ["mcm.version"] = "\nVersion: ",
+    ["mcm.metadata.eror"] = "The file \"HUD Companion Health Bar-metadata.toml\" is missing.",
     ["mcm.TESAll"] = "Mod page on TESAll",
     ["mcm.FullRest"] = "Mod page on FullRest",
     ["mcm.Nexus"] = "Mod page on Nexusmods",

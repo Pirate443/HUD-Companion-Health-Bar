@@ -2,6 +2,7 @@ local this = {
     --mcm general
     ["mcm.modname"] = "Интерфейс здоровья компаньонов",
     ["mcm.version"] = "\nВерсия: ",
+    ["mcm.metadata.eror"] = "Отсутствует файл \"HUD Companion Health Bar-metadata.toml\"",
     ["mcm.TESAll"] = "Страница мода на TESAll",
     ["mcm.FullRest"] = "Страница мода на FullRest",
     ["mcm.Nexus"] = "Страница мода на Nexusmods",
@@ -121,7 +122,7 @@ local this = {
     ["mcm.debug.desc"] = "Отладка.",
     -- mcm Blacklist
     ["mcm.CompanionBlacklist.label"] = "Черный список компаньонов",
-    ["mcm.CompanionBlacklist.desc"] = "Иногда персонажи, не являющиеся компаньонами, также могут получать шкалу здоровья. В этом случае их необходимо вручную внести в черный список. Все персонажи из черного списка не отображают шкалу здоровья.",
+    ["mcm.CompanionBlacklist.desc"] = "Иногда персонажи, не являющиеся компаньонами, также могут получать шкалу здоровья. В этом случае их необходимо вручную внести в черный список. Для всех персонажей из черного списка шкалу здоровья не отображается.",
     ["mcm.CompanionBlacklist.left"] = "Черный список",
     ["mcm.CompanionBlacklist.right"] = "Дружественные персонажи",
 }

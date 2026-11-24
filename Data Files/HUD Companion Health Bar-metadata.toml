@@ -1,0 +1,16 @@
+[package]
+name = "HUD Companion Health Bar"
+description = "This mod adds a companion health bar interface. This mod is an enhanced version of the \"More Detailed Companion HealthBars\" mod by Spammer21 and Mesafoo."
+homepage = "https://www.nexusmods.com/morrowind/mods/60242"
+repository = "https://github.com/Pirate443/HUD-Companion-Health-Bar"
+authors = [ "Pirate", ]
+version = "1.2"
+
+[dependencies]
+assets = ["MWSE\\mods\\Pirate\\HUD Companion Health Bar",]
+
+[dependencies.mwse]
+buildnumber = 5451
+
+[tools.mwse]
+lua-mod = "Pirate.HUD Companion Health Bar"
