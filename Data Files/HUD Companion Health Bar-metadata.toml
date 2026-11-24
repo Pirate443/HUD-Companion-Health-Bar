@@ -10,7 +10,7 @@ version = "1.2"
 assets = ["MWSE\\mods\\Pirate\\HUD Companion Health Bar",]
 
 [dependencies.mwse]
-buildnumber = 5451
+buildnumber = 4622
 
 [tools.mwse]
 lua-mod = "Pirate.HUD Companion Health Bar"
