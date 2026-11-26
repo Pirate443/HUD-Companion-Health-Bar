@@ -2,7 +2,7 @@
 --------------------------------------------------------------
 HUD Companion Health Bar
 --------------------------------------------------------------
-Version 1.1
+Version 1.2
 Author: Pirate
 Nexusmods: 
 Fullrest: 
@@ -42,6 +42,11 @@ MWSE 2.1 +
 Copy the "Data Files" to your game folder or use a mod manager.
 ----------------------------------------------------------------
 			Changelogs:
+Version: 1.2
+- Fixed a bug with setting bar transparency values when first creating a bar.
+- Fixed updating bar transparency when loading a preset.
+- Added metadata file "HUD Companion Health Bar-metadata.toml".
+
 Version 1.1
 - fix the blockWidth calculation.
 - added background for empty health, magic, and fatigue bars.
