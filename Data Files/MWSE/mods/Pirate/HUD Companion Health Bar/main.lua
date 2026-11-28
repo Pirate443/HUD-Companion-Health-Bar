@@ -703,6 +703,34 @@ function mcm.updateOptions()
     mcm.updateHUDSize()
 end
 
+local function tooltips()
+
+	for _, companionBar in pairs(companionHealthBars.healthBars) do
+		local companionRef = companionBar.companionRef
+		local image = companionBar.image
+		if not companionRef and not companionRef.mobile then return end
+		local weapon = companionRef.mobile.readiedWeapon
+		local magic1 = companionRef.mobile.currentEnchantedItem
+		local magic2 = companionRef.mobile.currentSpell
+        if weapon and weapon.object then
+            image:register(tes3.uiEvent.help, function()
+                tes3ui.createTooltipMenu({ item = weapon.object, itemData = weapon.itemData})
+            end)
+        elseif magic1 and magic1.object then
+            image:register(tes3.uiEvent.help, function()
+                tes3ui.createTooltipMenu({ item = magic1.object, itemData = magic1.itemData})
+            end)
+        elseif magic2 then
+            image:register(tes3.uiEvent.help, function()
+                tes3ui.createTooltipMenu({ spell = magic2 })
+            end)
+        else
+		--рукопашка
+
+        end
+    end
+end
+
 local function initialized()
     if seph and cf.sephIntegration then
         seph:registerElement(
@@ -721,6 +749,7 @@ local function initialized()
 
     event.register("loaded", mcm.updateOptions)
     event.register("load", (function() table.clear(companionHealthBars) end))
+    event.register("mouseAxis", tooltips)
 
     log:info("Version: "..config.modVersion.." Initialized!")
 end
