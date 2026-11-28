@@ -172,15 +172,18 @@ local function createNewHealthBars(companions)
 		labelMenu.autoHeight = true
 		labelMenu.flowDirection = "left_to_right"
         --создаем строку с именем компаньона
-		local nameplate = labelMenu:createRect():createLabel{
-			text = companionRef.object.name
-		}
-		--Add a top border to create some space between individual bars
-		nameplate.borderTop = 2
-
-nameplate.parent.autoWidth = true
-nameplate.parent.autoHeight = true
-nameplate.parent.alpha = 0.6
+        local nameplate = labelMenu:createRect():createLabel{
+            text = companionRef.object.name
+        }
+        --Add a top border to create some space between individual bars
+        nameplate.borderTop = 2
+        nameplate.parent.autoWidth = true
+        nameplate.parent.autoHeight = true
+        nameplate.parent.alpha = 0.6
+        -- начать диалог с компаньоном при клике на его имя в списке.
+        nameplate:registerAfter("mouseDown", function()
+            tes3.runLegacyScript({ reference = companionRef, command = "ForceGreeting" })
+        end)
 
 		--Create a bar with the companion's current/max health
 		local healthBarMenuID = tes3ui.registerID("CompanionHealthBars:"..companionRef.id..".bar")
