@@ -31,6 +31,7 @@ local this = {
     ["mcm.eventUpdate.label"] = "Включить обновление Здоровья при изменении",
     ["mcm.eventUpdate.desc"] = "Включить обновление Здоровья при изменении.",
     -- mcm presets
+    ["mcm.presets.page.label"] = "Предустановки",
     ["mcm.presets.cat.label"] = "Предустановки",
     ["mcm.presets.cat.desc"] = "Загрузка и сохранение предустановок для интерфейса здоровья компаньонов.",
     ["mcm.presets.select.label"] = "Выберите предустановку:",
@@ -54,7 +55,8 @@ local this = {
     ["mcm.presets.delete.yes"] = "Да",
     ["mcm.presets.delete.no"] = "Нет",
     ["mcm.presets.delete.msg"] = "Удален файл предустановки:",
-    -- mcm HUD appearance
+    -- mcm HUD Manual Settings
+    ["mcm.manualSettings.page.label"] = "Ручные настройки",
     ["mcm.category1.label"] = "Внешний вид интерфейса компаньонов",
     ["mcm.category1.desc"] = "Настройки внешнего вида интерфейса компаньонов.",
     ["mcm.name.BgAlpha.label"] = "Непрозрачность фона поля имени компаньона",
@@ -126,7 +128,7 @@ local this = {
     ["mcm.debug.desc"] = "Отладка.",
     -- mcm Blacklist
     ["mcm.CompanionBlacklist.label"] = "Черный список компаньонов",
-    ["mcm.CompanionBlacklist.desc"] = "Иногда персонажи, не являющиеся компаньонами, также могут получать шкалу здоровья. В этом случае их необходимо вручную внести в черный список. Для всех персонажей из черного списка шкалу здоровья не отображается.",
+    ["mcm.CompanionBlacklist.desc"] = "Иногда персонажи, не являющиеся компаньонами, также могут получать шкалу здоровья. В этом случае их необходимо вручную внести в черный список. Для всех персонажей из черного списка шкала здоровья не отображается.",
     ["mcm.CompanionBlacklist.left"] = "Черный список",
     ["mcm.CompanionBlacklist.right"] = "Дружественные персонажи",
 }

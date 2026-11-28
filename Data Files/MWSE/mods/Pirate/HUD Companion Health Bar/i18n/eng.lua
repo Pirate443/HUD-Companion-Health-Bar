@@ -31,6 +31,7 @@ local this = {
     ["mcm.eventUpdate.label"] = "Event-based health updates enabled",
     ["mcm.eventUpdate.desc"] = "Event-based health updates enabled.",
     -- mcm presets
+    ["mcm.presets.page.label"] = "Presets",
     ["mcm.presets.cat.label"] = "Presets",
     ["mcm.presets.cat.desc"] = "Save and load your HUD Companion Health Bar presets.",
     ["mcm.presets.select.label"] = "Select preset:",
@@ -54,7 +55,8 @@ local this = {
     ["mcm.presets.delete.yes"] = "Yes",
     ["mcm.presets.delete.no"] = "No",
     ["mcm.presets.delete.msg"] = "Preset deleted:",
-    -- mcm HUD appearance
+    -- mcm HUD Manual Settings
+    ["mcm.manualSettings.page.label"] = "Manual Settings",
     ["mcm.category1.label"] = "HUD Companion Health Bar appearance",
     ["mcm.category1.desc"] = "HUD Companion Health Bar appearance settings.",
     ["mcm.name.BgAlpha.label"] = "Nameplate Background Alpha:",

@@ -62,10 +62,10 @@ local function registerMCM()
     --template:saveOnClose(config.configPath, config.mcm)
     template:register()
         
-    local page = template:createSideBarPage { label = i18n("mcm.generalSettings"), showReset = true, showDefaultSetting = true }
-    addSideBar(page)
+    local generalPage = template:createSideBarPage { label = i18n("mcm.generalSettings"), showReset = true, showDefaultSetting = true }
+    addSideBar(generalPage)
 
-    local displayHUDCompanion = page:createCategory{
+    local displayHUDCompanion = generalPage:createCategory{
     label = i18n("mcm.HealthBars.label"),
     description = i18n("mcm.HealthBars.desc"),
     }
@@ -108,7 +108,7 @@ local function registerMCM()
         end
     }
 
-    local UpdateHealthBars = page:createCategory{
+    local UpdateHealthBars = generalPage:createCategory{
     label = i18n("mcm.UpdateHealthBars.label"),
     description = i18n("mcm.UpdateHealthBars.desc"),
     }
@@ -132,7 +132,22 @@ local function registerMCM()
         variable = mwse.mcm.createTableVariable{ id = "enableEvents", table = config.mcm }
     }
 
-    local presetsCategory = page:createCategory{
+    local miscSetting = generalPage:createCategory{
+    label = i18n("mcm.debug.label"),
+    description = i18n("mcm.debug.desc"),
+    }
+
+    miscSetting:createLogLevelOptions{
+        defaultSetting = config.mcmDefault.logLevel,
+        variable = mwse.mcm.createTableVariable{id = "logLevel", table = config.mcm},
+        callback = function(self)
+            log.level = self.variable.value
+        end
+    }
+
+    local presetsPage = template:createSideBarPage { label = i18n("mcm.presets.page.label"), showReset = true, showDefaultSetting = true }
+
+    local presetsCategory = presetsPage:createCategory{
         label = i18n("mcm.presets.cat.label"),
         description = i18n("mcm.presets.cat.desc"),
     }
@@ -175,8 +190,8 @@ local function registerMCM()
             local data = presets.loadPresetData(config.mcm.selectedPreset)
                 presetNameInput.variable.value = data.presetName
             end
-            if template and page then
-                template:clickTab(page)
+            if template and presetsPage then
+                template:clickTab(presetsPage)
             end
         end
     }
@@ -212,8 +227,8 @@ local function registerMCM()
                     presetDropdown.options = presets.getOptions()
                     presetDropdown.selectedOption = nil
                 end
-                if template and page then
-                    template:clickTab(page)
+                if template and presetsPage then
+                    template:clickTab(presetsPage)
                 end
             else
                 tes3.messageBox(i18n("mcm.presets.save.error"))
@@ -254,8 +269,8 @@ local function registerMCM()
                             if presetNameInput then
                                 presetNameInput.variable.value = ""
                             end
-                            if template and page then
-                                template:clickTab(page)
+                            if template and presetsPage then
+                                template:clickTab(presetsPage)
                             end
                             tes3.messageBox(i18n("mcm.presets.delete.msg") .. " " .. presetName)
                         end
@@ -268,7 +283,9 @@ local function registerMCM()
         end
     }
 
-    local category1 = page:createCategory{
+    local manualSettingsPage = template:createSideBarPage { label = i18n("mcm.manualSettings.page.label"), showReset = true, showDefaultSetting = true }
+
+    local category1 = manualSettingsPage:createCategory{
     label = i18n("mcm.category1.label"),
     description = i18n("mcm.category1.desc"),
     }
@@ -576,20 +593,7 @@ local function registerMCM()
         end
     }
 
-    local miscSetting = page:createCategory{
-    label = i18n("mcm.debug.label"),
-    description = i18n("mcm.debug.desc"),
-    }
-
-    miscSetting:createLogLevelOptions{
-        defaultSetting = config.mcmDefault.logLevel,
-        variable = mwse.mcm.createTableVariable{id = "logLevel", table = config.mcm},
-        callback = function(self)
-            log.level = self.variable.value
-        end
-    }
-
-    template:createExclusionsPage{
+    local BlacklistPage = template:createExclusionsPage{
         label = i18n("mcm.CompanionBlacklist.label"),
         description = i18n("mcm.CompanionBlacklist.desc"),
         leftListLabel = i18n("mcm.CompanionBlacklist.left"),
