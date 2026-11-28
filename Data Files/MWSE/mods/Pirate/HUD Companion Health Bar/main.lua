@@ -171,11 +171,17 @@ local function createNewHealthBars(companions)
 		labelMenu.autoWidth = true
 		labelMenu.autoHeight = true
 		labelMenu.flowDirection = "left_to_right"
-		local text = labelMenu:createLabel{
+        --создаем строку с именем компаньона
+		local nameplate = labelMenu:createRect():createLabel{
 			text = companionRef.object.name
 		}
 		--Add a top border to create some space between individual bars
-		text.borderTop = 2
+		nameplate.borderTop = 2
+
+nameplate.parent.autoWidth = true
+nameplate.parent.autoHeight = true
+nameplate.parent.alpha = 0.6
+
 		--Create a bar with the companion's current/max health
 		local healthBarMenuID = tes3ui.registerID("CompanionHealthBars:"..companionRef.id..".bar")
 
@@ -704,7 +710,7 @@ function mcm.updateOptions()
 end
 
 local function tooltips()
-
+if not companionHealthBars.healthBars then return end
 	for _, companionBar in pairs(companionHealthBars.healthBars) do
 		local companionRef = companionBar.companionRef
 		local image = companionBar.image
