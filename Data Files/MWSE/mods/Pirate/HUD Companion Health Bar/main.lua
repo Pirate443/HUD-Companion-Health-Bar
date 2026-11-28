@@ -179,7 +179,7 @@ local function createNewHealthBars(companions)
         nameplate.borderTop = 2
         nameplate.parent.autoWidth = true
         nameplate.parent.autoHeight = true
-        nameplate.parent.alpha = 0.6
+        nameplate.parent.alpha = cf.NameBackgroundAlpha / 100
         -- начать диалог с компаньоном при клике на его имя в списке.
         nameplate:registerAfter("mouseDown", function()
             tes3.runLegacyScript({ reference = companionRef, command = "ForceGreeting" })
@@ -331,6 +331,7 @@ local function createNewHealthBars(companions)
             block2 = block2,
             blockHealth = blockHealth,
             barMenu0 = healthBarMenuAlt,
+            nameplate = nameplate,
 		}
 	end
 end
@@ -541,6 +542,13 @@ function mcm.updateBarBgAlpha()
         companionBar.barMenu.parent.alpha = cf.BarBackgroundAlpha / 100
         companionBar.barMenu2.parent.alpha = cf.BarBackgroundAlpha / 100
         companionBar.barMenu3.parent.alpha = cf.BarBackgroundAlpha / 100
+    end
+end
+
+function mcm.updateNameplateBgAlpha()
+    if not companionHealthBars.healthBars then return end
+    for _, companionBar in pairs(companionHealthBars.healthBars) do
+        companionBar.nameplate.parent.alpha = cf.NameBackgroundAlpha / 100
     end
 end
 

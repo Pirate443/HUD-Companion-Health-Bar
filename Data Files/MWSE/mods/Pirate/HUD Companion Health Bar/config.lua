@@ -12,6 +12,7 @@ config.mcmDefault = {
     pollRate = 1,
     enableEvents = true,
     selectedPreset = "Pirate v1 Compact",
+    NameBackgroundAlpha = 0,
     healthBarPos = "combined", -- combined or separate
     showValuesHealth = true,
     healthBarWidth = 100,

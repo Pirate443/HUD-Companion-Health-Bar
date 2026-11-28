@@ -273,6 +273,21 @@ local function registerMCM()
     description = i18n("mcm.category1.desc"),
     }
 
+    category1:createSlider{
+        label = i18n("mcm.name.BgAlpha.label") .. " %s%%",
+        description = i18n("mcm.name.BgAlpha.desc"),
+        defaultSetting = config.mcmDefault.BarBackgroundAlpha,
+        restartRequired = false,
+        min = 0,
+        max = 100,
+        step = 1,
+        jump = 10,
+        variable = mwse.mcm.createTableVariable{ id = "NameBackgroundAlpha", table = config.mcm },
+        callback = function()
+            mcm.updateNameplateBgAlpha()
+        end
+    }
+
     HealthBarPosDropdown = category1:createDropdown {
         label = i18n("mcm.HealthBar.Pos.label"),
         description = i18n("mcm.HealthBar.Pos.desc"),

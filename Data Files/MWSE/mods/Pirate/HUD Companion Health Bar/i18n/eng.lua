@@ -57,6 +57,10 @@ local this = {
     -- mcm HUD appearance
     ["mcm.category1.label"] = "HUD Companion Health Bar appearance",
     ["mcm.category1.desc"] = "HUD Companion Health Bar appearance settings.",
+    ["mcm.name.BgAlpha.label"] = "Nameplate Background Alpha:",
+    ["mcm.name.BgAlpha.desc"] = "This parameter determines the opacity of the Nameplate background.\n\n\z
+    At 0, the Nameplate background is fully transparent.\n\z
+    At 100, the Nameplate background is fully opaque.",
     ["mcm.HealthBar.Pos.label"] = "Health bar position",
     ["mcm.HealthBar.Pos.desc"] = "This parameter determines the position of the health bar in the HUD.",
     ["mcm.HealthBar.Pos.combined"] = "Combined block",
